@@ -1,0 +1,61 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:ToDoList.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="500"
+        Width="300" Height="500" Padding="5"
+        x:Class="ToDoList.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="ToDoList">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+    <Grid RowDefinitions="Auto, *, Auto" x:Name="Root">
+        <TextBlock Grid.Row="0" Text="My ToDo List"></TextBlock>
+        <ScrollViewer Grid.Row="1">
+            <ItemsControl ItemsSource="{Binding ToDoItems}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="vm:ToDoItemViewModel">
+                        <Grid ColumnDefinitions="*, Auto">
+                            <CheckBox
+                                Grid.Column="0"
+                                IsChecked="{Binding IsChecked}"
+                                Content="{Binding Content}">
+                            </CheckBox>
+
+                            <Button
+                                Grid.Column="1"
+                                Command="{Binding Path=#Root.((vm:MainWindowViewModel)DataContext).RemoveItemCommand}"
+                                CommandParameter="{Binding}"
+                                Content="Remove">
+                            </Button>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <TextBox
+            Grid.Row="2"
+            Watermark="New"
+            VerticalContentAlignment="Center"
+            Text="{Binding NewItemContent}">
+            <TextBox.InnerRightContent>
+                <Button
+                    Command="{Binding AddItemCommand}"
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    Content="Add">
+                </Button>
+            </TextBox.InnerRightContent>
+            <TextBox.KeyBindings>
+                <KeyBinding Gesture="Enter" Command="{Binding AddItemCommand}" />
+            </TextBox.KeyBindings>
+        </TextBox>
+    </Grid>
+
+</Window>
