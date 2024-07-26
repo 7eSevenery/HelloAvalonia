@@ -8,8 +8,7 @@ namespace ToDoList.ViewModels;
 public partial class MainWindowViewModel : ViewModelBase
 {
     public ObservableCollection<ToDoItemViewModel> ToDoItems { get; } = new ObservableCollection<ToDoItemViewModel>();
-
-
+    
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(AddItemCommand))]
     private string? _newItemContent;
@@ -27,7 +26,6 @@ public partial class MainWindowViewModel : ViewModelBase
             });
         }
     }
-
 
     [RelayCommand(CanExecute = nameof(CanAddItem))]
     private void AddItem()
