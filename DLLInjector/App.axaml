@@ -1,0 +1,17 @@
+<Application
+    RequestedThemeVariant="Default"
+    x:Class="DLLInjector.App"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:local="using:DLLInjector"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
+
+    <Application.DataTemplates>
+        <local:ViewLocator />
+    </Application.DataTemplates>
+
+    <Application.Styles>
+        <FluentTheme />
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml" />
+    </Application.Styles>
+</Application>

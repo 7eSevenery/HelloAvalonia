@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList", "ToDoList\ToDoLi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MouseClicker", "MouseClicker\MouseClicker.csproj", "{648ABE52-5D26-43CB-AAEB-03760377105D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLLInjector", "DLLInjector\DLLInjector.csproj", "{7A92843E-1551-4C60-84D6-22DC12B1A5C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{648ABE52-5D26-43CB-AAEB-03760377105D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{648ABE52-5D26-43CB-AAEB-03760377105D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{648ABE52-5D26-43CB-AAEB-03760377105D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A92843E-1551-4C60-84D6-22DC12B1A5C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A92843E-1551-4C60-84D6-22DC12B1A5C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A92843E-1551-4C60-84D6-22DC12B1A5C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A92843E-1551-4C60-84D6-22DC12B1A5C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

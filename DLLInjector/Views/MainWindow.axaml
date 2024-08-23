@@ -1,0 +1,125 @@
+<Window
+    Height="300"
+    Icon="/Assets/avalonia-logo.ico"
+    MaxHeight="300"
+    MaxWidth="400"
+    MinHeight="300"
+    MinWidth="400"
+    Title="DLL Injector"
+    Width="400"
+    WindowStartupLocation="CenterScreen"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    mc:Ignorable="d"
+    x:Class="DLLInjector.Views.MainWindow"
+    x:DataType="vm:MainWindowViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:DLLInjector.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+    <Grid RowDefinitions="Auto, *, Auto">
+        <!--  Select Process  -->
+        <Grid
+            Grid.Row="0"
+            Margin="5"
+            RowDefinitions="*, *">
+            <TextBlock Grid.Row="0" Text="Process Name:" />
+
+            <Grid ColumnDefinitions="*, Auto" Grid.Row="1">
+                <TextBox
+                    Grid.Column="0"
+                    Margin="0,0,5,0"
+                    Text="{Binding SelectedProcess.Pid, FallbackValue=''}" />
+                <Button
+                    Command="{Binding ShowProcessWindowCommand}"
+                    Content="Select"
+                    Grid.Column="1" />
+            </Grid>
+        </Grid>
+
+        <!--  Set DLL  -->
+        <Border
+            BorderBrush="Black"
+            BorderThickness="1"
+            Grid.Row="1"
+            Margin="5"
+            x:Name="Root">
+            <Grid ColumnDefinitions="Auto, *">
+                <Grid
+                    Grid.Column="0"
+                    Margin="5"
+                    RowDefinitions="*, *, *">
+                    <Button
+                        Command="{Binding AddCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                        Content="Add"
+                        Grid.Row="0"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Center"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center" />
+
+                    <Button
+                        Command="{Binding RemoveCommand}"
+                        Content="Remove"
+                        Grid.Row="1"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Center"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center" />
+
+                    <Button
+                        Command="{Binding ClearCommand}"
+                        Content="Clear"
+                        Grid.Row="2"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Center"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center" />
+                </Grid>
+
+                <Border
+                    BorderBrush="Black"
+                    BorderThickness="1"
+                    Grid.Column="1"
+                    Margin="0,5,5,5">
+                    <ListBox ItemsSource="{Binding DllItems}" SelectedItem="{Binding SelectedDllItem}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate DataType="vm:DllItemViewModel">
+                                <TextBlock Text="{Binding Name}" />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!--  Inject / Settings / About  -->
+        <Grid
+            ColumnDefinitions="*, *, *"
+            Grid.Row="2"
+            Margin="5,5,5,10">
+            <Button
+                Command="{Binding InjectDllCommand}"
+                Content="Inject"
+                Grid.Column="0"
+                HorizontalAlignment="Center" />
+
+            <Button
+                Content="Settings"
+                Grid.Column="1"
+                HorizontalAlignment="Center" />
+
+            <Button
+                Content="About"
+                Grid.Column="2"
+                HorizontalAlignment="Center" />
+        </Grid>
+    </Grid>
+</Window>

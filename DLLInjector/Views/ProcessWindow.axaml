@@ -1,0 +1,90 @@
+﻿<Window
+    Height="450"
+    MaxHeight="450"
+    MaxWidth="300"
+    Title="Process List"
+    Width="300"
+    WindowStartupLocation="CenterScreen"
+    d:DesignHeight="450"
+    d:DesignWidth="300"
+    mc:Ignorable="d"
+    x:Class="DLLInjector.Views.ProcessWindow"
+    x:DataType="vm:ProcessWindowViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:DLLInjector.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.DataContext>
+        <vm:ProcessWindowViewModel />
+    </Design.DataContext>
+
+    <Grid RowDefinitions="*, Auto, Auto">
+        <DataGrid
+            Grid.Row="0"
+            IsReadOnly="True"
+            ItemsSource="{Binding ProcessItems}"
+            SelectedItem="{Binding SelectedProcess}">
+            <DataGrid.Styles>
+                <Style Selector="DataGridCell">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="DataGridCell">
+                                <Border
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="Transparent"
+                                    BorderThickness="0">
+
+                                    <ContentPresenter
+                                        Content="{TemplateBinding Content}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Background" Value="Transparent" />
+
+                    <Setter Property="Foreground" Value="Black" />
+                </Style>
+            </DataGrid.Styles>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Binding="{Binding Name}"
+                    Header="Name"
+                    Width="3*" />
+                <DataGridTextColumn
+                    Binding="{Binding Pid}"
+                    Header="Pid"
+                    Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Border
+            BorderBrush="Gray"
+            BorderThickness="0.5"
+            Grid.Row="1" />
+
+        <Grid
+            ColumnDefinitions="*, *"
+            Grid.Row="2"
+            Margin="5">
+            <Button
+                Command="{Binding SelectProcessCommand}"
+                Content="Select"
+                Grid.Column="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center" />
+
+            <Button
+                Command="{Binding CancelSelectCommand}"
+                Content="Cancel"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center" />
+        </Grid>
+    </Grid>
+</Window>
