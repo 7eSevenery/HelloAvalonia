@@ -1,14 +1,19 @@
-<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:MouseClicker.ViewModels"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="300"
-        Width="400" Height="300" Padding="5"
-        x:Class="MouseClicker.Views.MainWindow"
-        x:DataType="vm:MainWindowViewModel"
-        Icon="/Assets/avalonia-logo.ico"
-        Title="MouseClicker">
+<Window
+    Height="300"
+    Icon="/Assets/avalonia-logo.ico"
+    Padding="5"
+    Title="MouseClicker"
+    Width="400"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    mc:Ignorable="d"
+    x:Class="MouseClicker.Views.MainWindow"
+    x:DataType="vm:MainWindowViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:MouseClicker.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Design.DataContext>
         <vm:MainWindowViewModel />
@@ -17,47 +22,41 @@
     <Grid RowDefinitions="*, *, *">
         <Grid ColumnDefinitions="Auto, *">
             <Label
-                Grid.Column="0"
                 Content="点击次数："
-                VerticalContentAlignment="Center">
-            </Label>
+                Grid.Column="0"
+                VerticalContentAlignment="Center" />
             <TextBox
                 Grid.Column="1"
+                Text="{Binding Count}"
                 VerticalAlignment="Center"
-                VerticalContentAlignment="Center"
-                Text="{Binding Count}">
-            </TextBox>
+                VerticalContentAlignment="Center" />
         </Grid>
 
-        <Grid Grid.Row="1" ColumnDefinitions="Auto, *">
+        <Grid ColumnDefinitions="Auto, *" Grid.Row="1">
             <Label
-                Grid.Column="0"
                 Content="点击间隔："
-                VerticalContentAlignment="Center">
-            </Label>
+                Grid.Column="0"
+                VerticalContentAlignment="Center" />
             <TextBox
                 Grid.Column="1"
+                Text="{Binding Interval}"
                 VerticalAlignment="Center"
-                VerticalContentAlignment="Center"
-                Text="{Binding Interval}">
-            </TextBox>
+                VerticalContentAlignment="Center" />
         </Grid>
 
-        <Grid Grid.Row="2" ColumnDefinitions="*, *">
+        <Grid ColumnDefinitions="*, *" Grid.Row="2">
             <Button
+                Command="{Binding StartClickCommand}"
+                Content="开始"
                 Grid.Column="0"
                 HorizontalAlignment="Center"
-                Content="开始"
-                Command="{Binding StartClickCommand}"
-                IsEnabled="{Binding CanClick}">
-            </Button>
+                IsEnabled="{Binding CanClick}" />
             <Button
+                Command="{Binding StopClickCommand}"
+                Content="结束"
                 Grid.Column="1"
                 HorizontalAlignment="Center"
-                Content="结束"
-                Command="{Binding StopClickCommand}"
-                IsEnabled="{Binding !CanClick}">
-            </Button>
+                IsEnabled="{Binding !CanClick}" />
         </Grid>
     </Grid>
 </Window>

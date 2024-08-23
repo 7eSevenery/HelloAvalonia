@@ -1,38 +1,41 @@
-<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:ToDoList.ViewModels"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="500"
-        Width="300" Height="500" Padding="5"
-        x:Class="ToDoList.Views.MainWindow"
-        x:DataType="vm:MainWindowViewModel"
-        Icon="/Assets/avalonia-logo.ico"
-        Title="ToDoList">
+<Window
+    Height="500"
+    Icon="/Assets/avalonia-logo.ico"
+    Padding="5"
+    Title="ToDoList"
+    Width="300"
+    d:DesignHeight="500"
+    d:DesignWidth="300"
+    mc:Ignorable="d"
+    x:Class="ToDoList.Views.MainWindow"
+    x:DataType="vm:MainWindowViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:ToDoList.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Design.DataContext>
         <vm:MainWindowViewModel />
     </Design.DataContext>
 
     <Grid RowDefinitions="Auto, *, Auto" x:Name="Root">
-        <TextBlock Grid.Row="0" Text="My ToDo List"></TextBlock>
+        <TextBlock Grid.Row="0" Text="My ToDo List" />
         <ScrollViewer Grid.Row="1">
             <ItemsControl ItemsSource="{Binding ToDoItems}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate DataType="vm:ToDoItemViewModel">
                         <Grid ColumnDefinitions="*, Auto">
                             <CheckBox
+                                Content="{Binding Content}"
                                 Grid.Column="0"
-                                IsChecked="{Binding IsChecked}"
-                                Content="{Binding Content}">
-                            </CheckBox>
+                                IsChecked="{Binding IsChecked}" />
 
                             <Button
-                                Grid.Column="1"
                                 Command="{Binding Path=#Root.((vm:MainWindowViewModel)DataContext).RemoveItemCommand}"
                                 CommandParameter="{Binding}"
-                                Content="Remove">
-                            </Button>
+                                Content="Remove"
+                                Grid.Column="1" />
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
@@ -41,19 +44,18 @@
 
         <TextBox
             Grid.Row="2"
-            Watermark="New"
+            Text="{Binding NewItemContent}"
             VerticalContentAlignment="Center"
-            Text="{Binding NewItemContent}">
+            Watermark="New">
             <TextBox.InnerRightContent>
                 <Button
                     Command="{Binding AddItemCommand}"
-                    VerticalContentAlignment="Center"
+                    Content="Add"
                     HorizontalContentAlignment="Center"
-                    Content="Add">
-                </Button>
+                    VerticalContentAlignment="Center" />
             </TextBox.InnerRightContent>
             <TextBox.KeyBindings>
-                <KeyBinding Gesture="Enter" Command="{Binding AddItemCommand}" />
+                <KeyBinding Command="{Binding AddItemCommand}" Gesture="Enter" />
             </TextBox.KeyBindings>
         </TextBox>
     </Grid>
