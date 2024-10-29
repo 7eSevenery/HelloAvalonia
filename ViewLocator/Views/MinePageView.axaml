@@ -1,0 +1,59 @@
+﻿<UserControl
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    x:Class="ViewLocator.Views.MinePageView"
+    x:DataType="vm:MinePageViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:ViewLocator.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.DataContext>
+        <vm:MinePageViewModel />
+    </Design.DataContext>
+
+    <Grid RowDefinitions="2*, *, *">
+        <TextBlock
+            Grid.Row="0"
+            HorizontalAlignment="Center"
+            Text="Hello, This is Mine Page."
+            TextAlignment="Center"
+            VerticalAlignment="Center" />
+
+        <Grid Grid.Row="1" RowDefinitions="Auto, Auto">
+            <TextBox
+                Grid.Row="0"
+                HorizontalAlignment="Stretch"
+                Margin="5"
+                Text="{Binding Username}"
+                TextAlignment="Center"
+                VerticalAlignment="Center" />
+            <TextBox
+                Grid.Row="1"
+                HorizontalAlignment="Stretch"
+                Margin="5"
+                Text="{Binding Password}"
+                TextAlignment="Center"
+                VerticalAlignment="Center" />
+        </Grid>
+
+        <Grid ColumnDefinitions="*, *" Grid.Row="2">
+            <Button
+                Command="{Binding LoginCommand}"
+                Content="Login"
+                Grid.Column="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top" />
+
+            <Button
+                Command="{Binding CancelCommand}"
+                Content="Cancel"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top" />
+        </Grid>
+    </Grid>
+
+</UserControl>

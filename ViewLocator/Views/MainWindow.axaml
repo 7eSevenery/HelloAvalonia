@@ -1,0 +1,54 @@
+<Window
+    Height="400"
+    Icon="/Assets/avalonia-logo.ico"
+    Title="ViewLocator"
+    Width="300"
+    d:DesignHeight="400"
+    d:DesignWidth="300"
+    mc:Ignorable="d"
+    x:Class="ViewLocator.Views.MainWindow"
+    x:DataType="vm:MainWindowViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:ViewLocator.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.DataContext>
+        <!--
+            This only sets the DataContext for the previewer in an IDE,
+            to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs)
+        -->
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+    <Grid Margin="5" RowDefinitions="*, Auto, Auto">
+        <TransitioningContentControl Content="{Binding CurrentPage}" Grid.Row="0" />
+
+        <Border
+            Background="Gainsboro"
+            BorderBrush="Black"
+            BorderThickness="1"
+            CornerRadius="0"
+            Grid.Row="1"
+            Margin="0,5,0,5" />
+
+        <Grid ColumnDefinitions="*, *, *" Grid.Row="2">
+            <Button
+                Command="{Binding NavigateToHomePageCommand}"
+                Content="首页"
+                Grid.Column="0"
+                HorizontalAlignment="Center" />
+            <Button
+                Command="{Binding NavigateToCommunityPageCommand}"
+                Content="社区"
+                Grid.Column="1"
+                HorizontalAlignment="Center" />
+            <Button
+                Command="{Binding NavigateToMinePageCommand}"
+                Content="我的"
+                Grid.Column="2"
+                HorizontalAlignment="Center" />
+        </Grid>
+    </Grid>
+</Window>

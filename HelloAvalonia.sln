@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MouseClicker", "MouseClicke
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLLInjector", "DLLInjector\DLLInjector.csproj", "{7A92843E-1551-4C60-84D6-22DC12B1A5C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewLocator", "ViewLocator\ViewLocator.csproj", "{5E77CEBC-5B3C-4BED-A1E4-41502057C480}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{7A92843E-1551-4C60-84D6-22DC12B1A5C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A92843E-1551-4C60-84D6-22DC12B1A5C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A92843E-1551-4C60-84D6-22DC12B1A5C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E77CEBC-5B3C-4BED-A1E4-41502057C480}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E77CEBC-5B3C-4BED-A1E4-41502057C480}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E77CEBC-5B3C-4BED-A1E4-41502057C480}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E77CEBC-5B3C-4BED-A1E4-41502057C480}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
